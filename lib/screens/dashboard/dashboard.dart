@@ -74,6 +74,38 @@ class _DashBoardState extends State<DashBoard> {
                       size: 30,
                     ),
                   ),
+                  DataTable(
+                    sortColumnIndex: 1,
+                    sortAscending: sort,
+                    columns: [
+                      DataColumn(
+                        label: Text('Item'),
+                      ),
+                      DataColumn(
+                        numeric: true,
+                        onSort: (int index, bool ascending) {
+                          if (ascending) {
+                            items.sort((a, b) => b.itemPrice.compareTo(a.itemPrice));
+                          } else {
+                            items.sort((a, b) => a.itemPrice.compareTo(b.itemPrice));
+                          }
+                          setState(() {
+                            sort = ascending;
+                          });
+                        },
+                        label: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Center(
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text('Price'),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],),
                 ],
               ),
             ],
