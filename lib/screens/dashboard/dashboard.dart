@@ -26,7 +26,12 @@ class _DashBoardState extends State<DashBoard> {
     _priceController = TextEditingController();
   }
 
-
+  @override
+  void dispose() {
+    super.dispose();
+    _priceController.dispose();
+    _itemController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -113,6 +118,23 @@ class _DashBoardState extends State<DashBoard> {
         ),
       ],
     );
+  }
+
+  Iterable<DataRow> mapItemToDataRows(List<Item> items) {
+    Iterable<DataRow> dataRows = items.map((item) {
+      return DataRow(
+          cells: [
+            DataCell(
+              Text(item.itemName),
+            ),
+            DataCell(
+              Text(
+                item.itemPrice.toString(),
+              ),
+            ),
+          ]);
+    });
+    return dataRows;
   }
 }
 
