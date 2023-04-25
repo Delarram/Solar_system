@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_universe/detail_page.dart';
-import 'constants.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 
-import 'data.dart';
+import '../../data/data.dart';
+import '../../resources/constants.dart';
+import '../detailpage/detail_page.dart';
 
 class HomePage extends StatefulWidget {
   @override
